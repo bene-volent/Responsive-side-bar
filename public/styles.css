@@ -17,6 +17,7 @@ body,
 }
 
 
+/* Styling of General Styling */
 .nav-bar {
     background-color: var(--navbar-primary-bg);
 
@@ -27,7 +28,9 @@ body,
     display: flex;
     flex-direction: column;
 }
-
+.nav-items {
+    padding-left: calc(var(--navbar-thickness) / 4);
+}
 .logo-item {
     padding: 20px 0;
     display: flex;
@@ -35,6 +38,7 @@ body,
     align-items: center;
     background-color: var(--navbar-secondary-bg);
 }
+.nav-link{text-decoration: none;}
 
 .logo {
     width: calc(var(--navbar-thickness) * 0.75);
@@ -42,13 +46,6 @@ body,
     border-radius: calc(var(--navbar-thickness) / 2 * 0.75);
 }
 
-.nav-items {
-    display: flex;
-    padding-left: calc(var(--navbar-thickness) / 4);
-    height: calc(var(--navbar-thickness) * 0.75);
-    flex-direction: row;
-    align-items: center;
-}
 .nav-items:hover {
     background-color: var(--navitem-hover-bgcolor);
 }
@@ -64,33 +61,49 @@ body,
     flex-shrink: 0;
 }
 
+
 .nav-text {
     display: none;
 }
+.content{
+    min-width: 320px;
+}
+/* Styling for mobile devices */
 @media (max-width: 640px) {
-    .nav-bar {
-        bottom: 0;
-        width: 100vw;
-        height: var(--navbar-thickness);
-        transition: all var(--navbar-open-time) ease;
+    .nav-items {
+        display: flex;
+        padding-left: calc(var(--navbar-thickness) / 4);
+        height: calc(var(--navbar-thickness) * 0.75);
+        flex-direction: row;
         align-items: center;
     }
-    .nav-list{
-        height:100%;
+    .nav-bar {
+        bottom: 0;
+        width: max(320px,100vw);
+        
+        height: var(--navbar-thickness);
+        align-items: center;
+    }
+    .nav-list {
+        height: 100%;
         flex-direction: row;
         justify-content: space-evenly;
     }
-    .logo-item,.nav-items{
+    .logo-item,
+    .nav-items {
         padding: 0;
-        width:100%;
-        height:100%;
+        width: 100%;
+        height: 100%;
         justify-content: center;
     }
-    .content{
-        margin:10px;
+    .content {
+        margin: 10px;
         margin-bottom: calc(var(--navbar-thickness) + 1rem);
     }
 }
+
+/* Styling for Desktop devices */
+
 @media (min-width: 640px) {
     .content {
         margin-left: var(--navbar-thickness);
@@ -129,7 +142,25 @@ body,
     .nav-bar {
         width: var(--navbar-thickness);
         min-height: 100%;
-        
+
         transition: all var(--navbar-open-time) ease;
     }
+    .nav-link {
+        width: 100%;
+        display: flex;
+        height: calc(var(--navbar-thickness) * 0.75);
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* Scroll Bar Changes */
+body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+    background: var(--navbar-item-col);
+}
+body::-webkit-scrollbar-thumb{
+    background: var(--navbar-primary-bg);
 }
